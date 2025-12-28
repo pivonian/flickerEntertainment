@@ -328,6 +328,75 @@
                 padding: 50px 30px;
             }
         }
+
+        /* FAQ Section Styles */
+        .faq-section {
+            background: #fff;
+            padding: 80px 40px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #e11f4c;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 10px;
+        }
+
+        .faq-answer p, .faq-answer a {
+            padding-bottom: 20px;
+            color: #666;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .faq-answer a:hover {
+            color: #e11f4c;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            color: #e11f4c;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg); /* Simple X effect */
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust based on content length */
+        }
     </style>
 </head>
 <body>
@@ -432,6 +501,63 @@
             <div class="production-tag">💣 The Bomb</div>
         </div>
     </section>
+
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about Flicker Entertainment services.</p>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is the WEX Framework?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>The WEX (Watch Experience) Framework is our proprietary technology designed to optimize high-fidelity video streaming across various network conditions, ensuring a buffer-free 4K experience.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Where can I watch Flicker original productions?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>All our original content, including "The Battle" and "Warfront," are available exclusively on the <a href="https://watchflicker.doubtmedia.com">Flicker</a> Streaming Platform, accessible via web browsers, smart TVs, and mobile devices.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do you offer services for external clients?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! While we produce our own content, our team of VFX artists, editors, cinematographers, and sound designers are available for hire for independent films, commercials, and digital content.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do you offer individual services?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, if you only need 1 or 2 of our services we are happy to work with you and your teams to bring your vision to life.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How can I pitch a story to Flicker?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We are always looking for new stories. Please reach out to our production team via the contact email below with a brief treatment or pitch deck.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <footer id="contact">
         <h3 style="font-size: 24px; margin-bottom: 15px;">Get In Touch</h3>
@@ -452,6 +578,20 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                
+                // Close other open items (optional - remove if you want multiple open at once)
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) item.classList.remove('active');
+                });
+
+                faqItem.classList.toggle('active');
             });
         });
     </script>
